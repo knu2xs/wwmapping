@@ -91,8 +91,8 @@ class PhotoCollection(object):
     geometry_field_name = 'SHAPE'
 
     def __init__(self, path_to_directory_containing_photos):
-        self.path_source = path_to_directory_containing_photos
-        self.sdf = self._get_sdf(path_to_directory_containing_photos)
+        self.source_directory = path_to_directory_containing_photos
+        self._sdf = self._get_sdf(path_to_directory_containing_photos)
 
     def _get_sdf(self, path_directory):
         """
@@ -111,3 +111,35 @@ class PhotoCollection(object):
 
         # reindex all the data and return the result
         return photo_sdf.reset_index(drop=True)
+
+    @property
+    def spatialdataframe(self):
+        """
+        Return the photo collection as a SpatialDataFrame
+        :return: SpatialDataFrame
+        """
+        return self._sdf
+
+    @property
+    def featureset(self):
+        """
+        Return the photo collection as a FeatureSet
+        :return: FeatureSet
+        """
+        return self._sdf.to_featureset()
+
+    def to_csv(self, output_path):
+        """
+        Return the photo collection as a CSV
+        :param output_path: Path to where CSV will be saved.
+        :return: Path to csv.
+        """
+        return self._sdf.to_csv(output_path)
+
+    def to_featureclass(self, output_path):
+        """
+        Return the photo collection as a feature class.
+        :param output_path: Path to where feature class will be saved.
+        :return: Path to feature class.
+        """
+        return self._sdf.to_featureclass(os.path.dirname(output_path), os.path.basename(output_path))
