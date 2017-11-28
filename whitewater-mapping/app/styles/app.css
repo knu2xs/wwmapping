@@ -1,0 +1,7 @@
+/* esri styles */
+@import url('https://js.arcgis.com/4.5/esri/themes/dark/main.css');
+
+.esri-view {
+  height: 800px;
+  width: 100%;
+}
