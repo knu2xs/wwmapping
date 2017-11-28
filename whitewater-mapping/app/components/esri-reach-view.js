@@ -72,6 +72,7 @@ export default Component.extend({
 
   _basemapWidgetVisible: false,
   _layerlistWidgetVisible: false,
+  _fullscreen: false,
 
   _removeBasemapWidget: function() {
     this._view.ui.remove(this._basemapWidget);
@@ -109,15 +110,36 @@ export default Component.extend({
     },
 
     mapFullscreen: function(){
-      let elem = document.getElementById('esriReachView');
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
+      if (!this._fullscreen) {
+        let elem = document.getElementById('esriReachView');
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+          this._fullscreen = true;
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+          this._fullscreen = true;
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+          this._fullscreen = true;
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+          this._fullscreen = true;
+        }
+
+      } else {
+        if (document.exitFullscreen){
+          document.exitFullscreen();
+          this._fullscreen = false;
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+          this._fullscreen = false;
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+          this._fullscreen = false;
+        } else if (document.webkitExitFullscreen){
+          document.webkitExitFullscreen();
+          this._fullscreen = false;
+        }
       }
       //TODO: change status or remove fullscreen button when in fullscreen mode
     }

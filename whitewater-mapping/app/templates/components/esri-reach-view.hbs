@@ -14,19 +14,19 @@
             {{#bs-button
               icon="glyphicon glyphicon-th-large"
               type="default"
-              value=1
+              value="Basemap"
               onClick=(action "toggleBasemap")
             }}
-              Basemap
+              <span class="hidden-sm hidden-xs">Basemap</span>
             {{/bs-button}}
 
             {{#bs-button
               icon="glyphicon glyphicon-th-list"
               type="default"
-              value=2
+              value="Layers"
               onClick=(action "toggleLayerlist")
             }}
-              Layers
+              <span class="hidden-sm hidden-xs">Layers</span>
             {{/bs-button}}
 
           {{/bs-button-group}}
@@ -35,7 +35,7 @@
             icon="glyphicon glyphicon-fullscreen"
             onClick=(action "mapFullscreen")
           }}
-            Fullscreen
+            <span class="hidden-sm hidden-xs">Fullscreen</span>
           {{/bs-button}}
 
         </div>
