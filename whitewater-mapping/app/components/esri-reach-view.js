@@ -107,7 +107,6 @@ export default Component.extend({
     },
 
     mapFullscreen: function(){
-      console.log('fullscreen');
       let elem = document.getElementById(this.mapDivId);
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
