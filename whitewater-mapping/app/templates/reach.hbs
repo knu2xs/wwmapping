@@ -1,2 +1,33 @@
-{{esri-reach-view}}
+<h2>Sitkum
+  <small>Above Brandeberry Creek to Hyas Creek</small>
+</h2>
+
+<!--TODO: move tabs into individual routes-->
+
+{{#bs-tab as |tab|}}
+
+  {{#tab.pane title="Overview"}}
+    <table class="table">
+      <tr>
+        <td>Abstract</td>
+        <td>Blah Blah Blah</td>
+      </tr>
+      <tr>
+        <td>Difficulty</td>
+        <td>IV-V</td>
+      </tr>
+    </table>
+  {{/tab.pane}}
+
+  {{#tab.pane title="Map"}}
+    {{esri-reach-view displayControls=true}}
+  {{/tab.pane}}
+
+  {{#tab.pane title="Detailed"}}
+    <h3>Description: ...</h3>
+  {{/tab.pane}}
+
+{{/bs-tab}}
+
+
 {{outlet}}

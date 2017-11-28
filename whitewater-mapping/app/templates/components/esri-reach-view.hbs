@@ -1,4 +1,22 @@
-<button {{action "toggleBasemap"}}>Change Basemap</button>
-<button {{action "toggleLayerlist"}}>Control Layers</button>
+{{#if displayControls}}
+
+  {{#bs-button-group value=activeMapWidget type="radio" onChange=(action (mut buttonGroupValue)) as |bg|}}
+
+    <!--TODO: set active status for buttons-->
+    {{#bs-button icon="glyphicon glyphicon-th-large" onClick=(action "toggleBasemap")}}
+      Basemap
+    {{/bs-button}}
+
+    {{#bs-button icon="glyphicon glyphicon-th-list" onClick=(action "toggleLayerlist")}}
+      Layers
+    {{/bs-button}}
+
+    {{#bs-button icon="glyphicon glyphicon-fullscreen" onClick=(action "mapFullscreen")}}
+      Fullscreen
+    {{/bs-button}}
+
+  {{/bs-button-group}}
+{{/if}}
+
 <div id="esriView"></div>
-{{yield}}
+{{yield}}ß

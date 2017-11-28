@@ -1,15 +1,13 @@
 import Component from '@ember/component';
 import Ember from 'ember';
 
-// import layout from '../templates/components/esri-reach-view';
-
 export default Component.extend({
-
-  // layout,
 
   classNames: ['scene-view'],
 
   esriLoader: Ember.inject.service('esri-loader'),
+
+  mapDivId: 'esriView',
 
   // once we have a DOM node to attach the map to...
   didInsertElement() {
@@ -36,7 +34,7 @@ export default Component.extend({
         }),
 
         // DOM div id
-        container: 'esriView',
+        container: this.mapDivId,
 
         // Meades Ranch, KS
         center: [-98.5422, 39.2241],
@@ -63,6 +61,8 @@ export default Component.extend({
           duration: 30000,
           easing: 'in-out-expo'
         });
+
+        // TODO: move controls DOM into map div so fullscreen takes controls with it
 
       })
     });
@@ -104,6 +104,21 @@ export default Component.extend({
       } else {
         this._removeLayerlistWidget();
       }
+    },
+
+    mapFullscreen: function(){
+      console.log('fullscreen');
+      let elem = document.getElementById(this.mapDivId);
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      }
+      //TODO: add resize map to fill screen
     }
 
   },
