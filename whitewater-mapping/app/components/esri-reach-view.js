@@ -7,7 +7,11 @@ export default Component.extend({
 
   esriLoader: Ember.inject.service('esri-loader'),
 
-  mapDivId: 'esriView',
+  _mapDivId: 'esriView',
+
+  // TODO: Create custom list of basemaps
+
+  // TODO: Publish and add both vector tile and feature services for reaches
 
   // once we have a DOM node to attach the map to...
   didInsertElement() {
@@ -34,7 +38,7 @@ export default Component.extend({
         }),
 
         // DOM div id
-        container: this.mapDivId,
+        container: this._mapDivId,
 
         // Meades Ranch, KS
         center: [-98.5422, 39.2241],
@@ -61,8 +65,6 @@ export default Component.extend({
           duration: 30000,
           easing: 'in-out-expo'
         });
-
-        // TODO: move controls DOM into map div so fullscreen takes controls with it
 
       })
     });
@@ -107,7 +109,7 @@ export default Component.extend({
     },
 
     mapFullscreen: function(){
-      let elem = document.getElementById(this.mapDivId);
+      let elem = document.getElementById('esriReachView');
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
       } else if (elem.msRequestFullscreen) {
@@ -117,7 +119,7 @@ export default Component.extend({
       } else if (elem.webkitRequestFullscreen) {
         elem.webkitRequestFullscreen();
       }
-      //TODO: add resize map to fill screen
+      //TODO: change status or remove fullscreen button when in fullscreen mode
     }
 
   },
