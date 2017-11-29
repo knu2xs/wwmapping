@@ -10,6 +10,11 @@ body {
   border-radius: 4px;
 }
 
+.esri-ui-manual-container>.esri-component, .esri-zoom .esri-widget-button:last-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 #esriReachViewPage {
   height: 800px;
   width: 100%;

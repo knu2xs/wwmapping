@@ -71,4 +71,4 @@ resources
 
 
 # hidden stuff
-.*
+**/.*
