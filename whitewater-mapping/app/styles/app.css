@@ -1,7 +1,15 @@
 /* esri styles */
 @import url('https://js.arcgis.com/4.5/esri/themes/light/main.css');
 
+/* google fonts */
+@import url('https://fonts.googleapis.com/css?family=Eczar|Gentium+Basic');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Eczar', serif;;
+}
+
 body {
+  font-family: 'Gentium Basic', serif;
   padding-top: 20px;
   padding-bottom: 20px;
 }
