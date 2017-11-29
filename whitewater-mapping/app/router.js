@@ -7,7 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('reach', {path: 'reach/:reachId'});
+  this.route('reach', {path: 'reach/:reachId'}, function() {
+    this.route('map');
+    this.route('detail');
+  });
 });
 
 export default Router;
